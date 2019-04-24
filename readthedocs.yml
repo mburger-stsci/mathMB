@@ -1,0 +1,15 @@
+type: sphinx
+python:
+    version: 3.6
+    setup_py_install: true
+conda:
+    file: .rtd-environment.yml
+
+# Required
+version: 1
+
+# Build documentation in the docs/ directory with Sphinx
+sphinx:
+  configuration: docs/conf.py
+
+

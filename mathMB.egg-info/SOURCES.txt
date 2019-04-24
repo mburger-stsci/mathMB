@@ -1,0 +1,11 @@
+README.rst
+setup.py
+mathMB/__init__.py
+mathMB/interpu.py
+mathMB/minmaxmean.py
+mathMB/randomdeviates.py
+mathMB/rotation_matrix.py
+mathMB.egg-info/PKG-INFO
+mathMB.egg-info/SOURCES.txt
+mathMB.egg-info/dependency_links.txt
+mathMB.egg-info/top_level.txt
