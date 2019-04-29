@@ -52,31 +52,6 @@ def random_deviates_2d(fdist, x0, y0, num):
     ypts = np.array([i.value for i in ypts])*un
     return xpts, ypts
 
-def random_gaussian2(mu, sigma, num):
-    '''Choose random deviates from a 1D normal distribution.
-    mu = mean value
-    sigma = FWHM
-    num = number of particles
-    '''
-
-    u0, u1 = random.rand(num), random.rand(num)
-    ypr = np.sin(2*np.pi*u0) * np.sqrt(-2*np.log(u1))
-    y = sigma * ypr + mu
-    return y
-
-
-def random_gaussian(mu, sigma, num):
-    '''Choose random deviates from a 1D normal distribution.
-
-    Uses np.random.randn. This is faster than RandomGaussian
-    mu = mean value
-    sigma = FWHM
-    num = number of particles
-    '''
-
-#    return random.randn(num)*sigma*np.sqrt(2*np.log(2)) + mu
-    return random.normal(mu, sigma, num)
-
 
 if __name__ == '__main__':
     import matplotlib.pyplot as plt

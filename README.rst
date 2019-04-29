@@ -15,6 +15,11 @@ but returns the mass as an astropy quantity.
 
 Documentation at https://mathmb.readthedocs.io/en/latest/.
 
+Installation
+------------
+
+>>> pip install mathMB
+
 License
 -------
 
