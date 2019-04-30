@@ -1,16 +1,14 @@
-'''Compute random deviates from arbitrary 1D and 2D distributions.'''
-
+"""Compute random deviates from arbitrary 1D and 2D distributions."""
 import numpy as np
 import numpy.random as random
 from scipy import interpolate
 
 
 def random_deviates_1d(x, f_x, num):
-    '''Compute random deviates from arbitrary 1D distribution.
+    """Compute random deviates from arbitrary 1D distribution.
 
     Uses Transformation method (Numerical Recepies, 7.3.2)
-    '''
-
+    """
     cumsum = f_x.cumsum()
     cumsum -= cumsum.min()
     cumsum /= cumsum.max()
@@ -18,7 +16,7 @@ def random_deviates_1d(x, f_x, num):
 
 
 def random_deviates_2d(fdist, x0, y0, num):
-    '''Compute random deviates from arbitrary 2D distribution.
+    """Compute random deviates from arbitrary 2D distribution.
 
     Uses acceptance/rejection method.
     Inputs:
@@ -28,8 +26,7 @@ def random_deviates_2d(fdist, x0, y0, num):
         num: number of points to choose
     outputs:
         x, y: vectors of length num
-    '''
-
+    """
     mx = (x0.max()-x0.min(), x0.min())
     my = (y0.max()-y0.min(), y0.min())
     fmax = fdist.max()
@@ -51,39 +48,3 @@ def random_deviates_2d(fdist, x0, y0, num):
     un = ypts[0].unit
     ypts = np.array([i.value for i in ypts])*un
     return xpts, ypts
-
-
-if __name__ == '__main__':
-    import matplotlib.pyplot as plt
-
-    test1 = False
-    test2 = True
-
-    if test1:
-        x = np.arange(101)
-        y = np.sin(x/100*2*np.pi)**2
-
-        rr = RandomDeviates1d(x, y, 1000000)
-        hh, xx = np.histogram(rr, bins=101)
-
-        plt.plot(x, y/y.max())
-        plt.plot((xx[:-1]+xx[1:])/2., hh/hh.max())
-        plt.show()
-
-    if test2:
-        f0 = random_gaussian(3., 0.5, 1000000)
-        f1 = random_gaussian2(3., 0.5, 1000000)
-        f2 = random.randn(1000000)*0.5*np.sqrt(2*np.log(2)) + 3
-
-        h0, x0 = np.histogram(f0, bins=100, range=(0, 6))
-        h1, x1 = np.histogram(f1, bins=100, range=(0, 6))
-        h2, x2 = np.histogram(f2, bins=100, range=(0, 6))
-
-        x0 = (x0[0:-1]+x0[1:])/2.
-        x1 = (x1[0:-1]+x1[1:])/2.
-        x2 = (x2[0:-1]+x2[1:])/2.
-
-        plt.plot(x0, h0)
-        plt.plot(x1, h1)
-        plt.plot(x2, h2)
-        plt.show()

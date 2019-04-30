@@ -8,4 +8,4 @@ from .rotation_matrix import rotation_matrix
 name = 'mathMB'
 __author__ = 'Matthew Burger'
 __email__ = 'mburger@stsci.edu'
-__version__ = '1.0.0'
+__version__ = '1.0.1'
