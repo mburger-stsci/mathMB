@@ -43,6 +43,9 @@ docs/_templates/autosummary/module.rst
 docs/mathMB/LICENSE.rst
 docs/mathMB/index.rst
 docs/mathMB/interpu.rst
+licenses/LICENSE.rst
+licenses/README.rst
+licenses/TEMPLATE_LICENCE.rst
 mathMB/__init__.py
 mathMB/interpu.py
 mathMB/minmaxmean.py
