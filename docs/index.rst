@@ -18,12 +18,6 @@ astropy quantity is provided.
 
   LICENSE
 
-..  note The layout of this directory is simply a suggestion.  To follow
-          traditional practice, do *not* edit this page, but instead place
-          all documentation for the package inside ``mathMB/``.
-          You can follow this practice or choose your own layout.
-
-
 :Authors: Matthew Burger
 
 :License: :doc:`LICENSE`

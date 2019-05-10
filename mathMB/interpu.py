@@ -5,11 +5,7 @@ x and xp have different units, xp is converted to the units of x before
 interpolation.
 
 :Authors: Matthew Burger
-
-:License: :doc:`LICENSE'
 """
-
-
 import numpy as np
 
 
@@ -18,11 +14,14 @@ def interpu(x, xp, fp, **kwargs):
 
     Parameters
     ----------
-    x: The x-coordinates at which to evaluate the interpolated values
+    x
+        The x-coordinates at which to evaluate the interpolated values
 
-    xp: The x-coordinates of the data points.
+    xp
+        The x-coordinates of the data points.
 
-    yp: The y-coordinates of the data points
+    yp
+        The y-coordinates of the data points
 
     x and xp must have compatible units. See `numpy.interp
     <https://docs.scipy.org/doc/numpy/reference/generated/numpy.interp.html>`_

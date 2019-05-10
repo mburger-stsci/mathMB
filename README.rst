@@ -8,11 +8,6 @@ Math helper functions for nexoclom and general use
 Package Contents
 ----------------
 
-atomicmass : Returns the atomic mass of an atom or molecule. This is really
-just a wrapper for
-`periodictable <https://periodictable.readthedocs.io/en/latest/index.html>`_
-but returns the mass as an astropy quantity.
-
 Documentation at https://mathmb.readthedocs.io/en/latest/.
 
 Installation

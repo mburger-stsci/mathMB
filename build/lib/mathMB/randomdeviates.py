@@ -7,7 +7,24 @@ from scipy import interpolate
 def random_deviates_1d(x, f_x, num):
     """Compute random deviates from arbitrary 1D distribution.
 
-    Uses Transformation method (Numerical Recepies, 7.3.2)
+    f_x does not need to integrate to 1. The function nomralizes the
+    distribution. Uses Transformation method (Numerical Recepies, 7.3.2)
+
+    Parameters
+    ----------
+    x
+        The x values of the distribution
+
+    f_x
+        The relative probability of the value being in x and x+dx
+
+    num
+        The number of random deviates to compute
+
+    Returns
+    -------
+
+    numpy array of length num chosen from the distribution f_x.
     """
     cumsum = f_x.cumsum()
     cumsum -= cumsum.min()
@@ -43,8 +60,6 @@ def random_deviates_2d(fdist, x0, y0, num):
         ypts.extend(list(uy[mm]))
 
     xpts, ypts = xpts[0:num], ypts[0:num]
-    un = xpts[0].unit
-    xpts = np.array([i.value for i in xpts])*un
-    un = ypts[0].unit
-    ypts = np.array([i.value for i in ypts])*un
+    xpts = np.array([i.value for i in xpts])*xpts[0].unit
+    ypts = np.array([i.value for i in ypts])*ypts[0].unit
     return xpts, ypts
