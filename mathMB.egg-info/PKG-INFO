@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: mathMB
 Version: 1.0.4
-Summary: Math helper functions for nexoclom and general use
+Summary: Mathematical procedures for nexoclom and general use
 Home-page: https://github.com/mburger-stsci/mathMB
 Author: Matthew Burger
 Author-email: mburger@stsci.edu
