@@ -2,6 +2,7 @@
 import numpy as np
 import numpy.random as random
 from scipy import interpolate
+import astropy.units as u
 
 
 def random_deviates_1d(x, f_x, num):
@@ -60,6 +61,14 @@ def random_deviates_2d(fdist, x0, y0, num):
         ypts.extend(list(uy[mm]))
 
     xpts, ypts = xpts[0:num], ypts[0:num]
-    xpts = np.array([i.value for i in xpts])*xpts[0].unit
-    ypts = np.array([i.value for i in ypts])*ypts[0].unit
+
+    if isinstance(xpts[0], float):
+        xpts = np.array(xpts)
+        ypts = np.array(ypts)
+    elif isinstance(xpts[0], type(1*u.cm)):
+        xpts = np.array([i.value for i in xpts])*xpts[0].unit
+        ypts = np.array([i.value for i in ypts])*ypts[0].unit
+    else:
+        raise TypeError
+
     return xpts, ypts

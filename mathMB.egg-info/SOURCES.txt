@@ -27,3 +27,5 @@ mathMB.egg-info/SOURCES.txt
 mathMB.egg-info/dependency_links.txt
 mathMB.egg-info/requires.txt
 mathMB.egg-info/top_level.txt
+mathMB/tests/__init__.py
+mathMB/tests/test_interpu.py

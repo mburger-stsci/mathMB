@@ -17,7 +17,7 @@ conf = ConfigParser()
 conf.read(['setup.cfg'])
 metadata = dict(conf.items('metadata'))
 
-PACKAGENAME = metadata.get('package_name', 'atomicdataMB')
+PACKAGENAME = metadata.get('package_name', 'mathMB')
 DESCRIPTION = metadata.get('description', '')
 AUTHOR = metadata.get('author', 'Matthew Burger')
 AUTHOR_EMAIL = metadata.get('author_email', 'mburger@stsci.edu')
@@ -90,7 +90,7 @@ except ImportError:
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
-        self.test_args = ['atomicdataMB/tests']
+        self.test_args = ['mathMB/tests']
         self.test_suite = True
 
     def run_tests(self):
