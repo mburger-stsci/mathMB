@@ -1,10 +1,10 @@
-"""``interpu()``: 1D linear interpoluation using astropy quantities.
+"""``interpu()``: 1D linear interpolation using astropy quantities.
 
-This is a wrapper for numpy.interp for use when using astropy quanitites. If
+This is a wrapper for numpy.interp for use when using astropy quantities. If
 x and xp have different units, xp is converted to the units of x before
 interpolation.
 
-:Authors: Matthew Burger
+:Author: Matthew Burger
 """
 import numpy as np
 
@@ -20,13 +20,12 @@ def interpu(x, xp, fp, **kwargs):
     xp
         The x-coordinates of the data points.
 
-    yp
+    fp
         The y-coordinates of the data points
 
     x and xp must have compatible units. See `numpy.interp
     <https://docs.scipy.org/doc/numpy/reference/generated/numpy.interp.html>`_
     for details on interpolation.
-
     """
     fp0 = fp.value
     x0 = x.value
