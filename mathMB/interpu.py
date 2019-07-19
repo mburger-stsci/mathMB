@@ -2,7 +2,8 @@
 
 This is a wrapper for numpy.interp for use when using astropy quantities. If
 x and xp have different units, xp is converted to the units of x before
-interpolation.
+interpolation. An exception is raised if the units are not compatible
+(i.e., the units of xp cannot be converted to the units of x).
 
 :Author: Matthew Burger
 """
@@ -11,9 +12,9 @@ import numpy as np
 
 def interpu(x, xp, fp, **kwargs):
     """Return one dimensional interpolated astropy quantities.
-
-    Parameters
-    ----------
+    
+    **Parameters**
+    
     x
         The x-coordinates at which to evaluate the interpolated values
 
@@ -23,6 +24,8 @@ def interpu(x, xp, fp, **kwargs):
     fp
         The y-coordinates of the data points
 
+    **Notes**
+    
     x and xp must have compatible units. See `numpy.interp
     <https://docs.scipy.org/doc/numpy/reference/generated/numpy.interp.html>`_
     for details on interpolation.

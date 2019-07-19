@@ -11,8 +11,8 @@ def random_deviates_1d(x, f_x, num):
     f_x does not need to integrate to 1. The function nomralizes the
     distribution. Uses Transformation method (Numerical Recepies, 7.3.2)
 
-    Parameters
-    ----------
+    **Parameters**
+    
     x
         The x values of the distribution
 
@@ -22,8 +22,7 @@ def random_deviates_1d(x, f_x, num):
     num
         The number of random deviates to compute
 
-    Returns
-    -------
+    **Returns**
 
     numpy array of length num chosen from the distribution f_x.
     """
@@ -37,13 +36,20 @@ def random_deviates_2d(fdist, x0, y0, num):
     """Compute random deviates from arbitrary 2D distribution.
 
     Uses acceptance/rejection method.
-    Inputs:
-        fdist: 2d array of relative probability
-        x0: xaxis
-        y0: yaxis
-        num: number of points to choose
-    outputs:
-        x, y: vectors of length num
+    **Parameters**
+        fdist
+            2d array of relative probability
+        x0
+            xaxis
+        y0
+            yaxis
+        num
+            number of points to choose
+            
+    **Outputs**
+    
+        x, y
+            vectors of length num
     """
     mx = (x0.max()-x0.min(), x0.min())
     my = (y0.max()-y0.min(), y0.min())
