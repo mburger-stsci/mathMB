@@ -2,7 +2,7 @@ MANIFEST.in
 README.rst
 setup.cfg
 setup.py
-docs/.index.rst.swp
+docs/._MathJax.js
 docs/Makefile
 docs/MathJax.js
 docs/conf.py
