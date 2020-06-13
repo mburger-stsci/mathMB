@@ -22,6 +22,7 @@ licenses/LICENSE.rst
 licenses/README.rst
 licenses/TEMPLATE_LICENCE.rst
 mathMB/__init__.py
+mathMB/fit_model.py
 mathMB/interpu.py
 mathMB/minmaxmean.py
 mathMB/randomdeviates.py
