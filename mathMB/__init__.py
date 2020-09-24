@@ -9,4 +9,4 @@ from .fit_model import fit_model
 name = 'mathMB'
 __author__ = 'Matthew Burger'
 __email__ = 'mburger@stsci.edu'
-__version__ = '1.3'
+__version__ = '1.4'
