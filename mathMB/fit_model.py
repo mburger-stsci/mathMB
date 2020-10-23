@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.optimize import minimize_scalar
+import statsmodels.api as sm
 from astropy.visualization import PercentileInterval
 
 
@@ -51,23 +52,40 @@ def fit_model(data, model, sigma, fit_method='chisq', masking=None,
     if mask_only:
         return None, None, mask
     else:
-        available_fitfunctions = ['chisq', 'difference']
+        available_fitfunctions = ['chisq', 'difference', 'wls']
         if np.any(mask) == False:
+            # No data points are included - just do a simple fit for show
             mask_ = mask.copy()
             mask[:] = True
             model_strength = minimize_scalar(difference)
             mask = mask_
+            return model_strength.x, model_strength.fun, mask
         elif fit_method.lower() in available_fitfunctions:
-            model_strength = minimize_scalar(eval(fit_method.lower()))
-            if sigmalimit is not None:
-                siglimit = float(sigmalimit[8:])
-                diff = (data - model_strength.x*model)/sigma
-                mask = mask & (diff < siglimit*sigma)
-                model_strength = minimize_scalar(eval(fit_method.lower()))
+            if fit_method == 'wls':
+                # Weighted least squares fit
+                wls_model = sm.WLS(model[mask], data[mask], 1./sigma[mask]**2)
+                result = wls_model.fit()
+                
+                if sigmalimit is not None:
+                    siglimit = float(sigmalimit[8:])
+                    diff = (data - model/result.params[0])/sigma
+                    mask = mask & (diff < siglimit*sigma)
+                    wls_model = sm.WLS(model[mask], data[mask], 1./sigma[mask]**2)
+                    result = wls_model.fit()
+                else:
+                    pass
+                return 1./result.params[0], result.rsquared, mask
             else:
-                pass
+                model_strength = minimize_scalar(eval(fit_method.lower()))
+                
+                if sigmalimit is not None:
+                    siglimit = float(sigmalimit[8:])
+                    diff = (data - model_strength.x*model)/sigma
+                    mask = mask & (diff < siglimit*sigma)
+                    model_strength = minimize_scalar(eval(fit_method.lower()))
+                else:
+                    pass
+                return model_strength.x, model_strength.fun, mask
         else:
             raise InputError('mathMB.fit_model',
                              f'fit_method = {fit_method} not defined.')
-    
-        return model_strength.x, model_strength.fun, mask
